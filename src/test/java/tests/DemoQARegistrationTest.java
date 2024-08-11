@@ -1,17 +1,28 @@
 package tests;
 
+import helpers.Attachments;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Tag;
 import page.RegistrationPage;
 import randomValuesForTest.Users;
-
 import static io.qameta.allure.Allure.step;
 
 public class DemoQARegistrationTest extends TestBase {
 
+    @AfterEach
+    void addAttachments() {
+        Attachments.screenshotAs("Last screenshot");
+        Attachments.pageSource();
+        Attachments.browserConsoleLogs();
+        Attachments.addVideo();
+    }
+
     RegistrationPage registrationPage = new RegistrationPage();
     Users user = new Users();
     @Test
+    @Tag("demoqa")
     @DisplayName("Filling all forms")
     void fillFormTest() {
         registrationPage.openPage()
@@ -43,6 +54,7 @@ public class DemoQARegistrationTest extends TestBase {
         });
     }
     @Test
+    @Tag("demoqa")
     @DisplayName("Filling only necessary forms")
     void onlyNecessaryFormsRegistrationTest() {
         registrationPage.openPage()
@@ -59,6 +71,7 @@ public class DemoQARegistrationTest extends TestBase {
                 .checkResults("Date of Birth", user.day + " " + user.month + "," + user.year);
     }
     @Test
+    @Tag("demoqa")
     @DisplayName("Adding wrong number")
     void negativeRegistrationTest(){
         registrationPage.openPage()
