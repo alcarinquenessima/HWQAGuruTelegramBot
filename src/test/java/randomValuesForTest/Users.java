@@ -20,7 +20,7 @@ public class Users {
             "Economics", "Civics", "Hindi",
             "English", "History");
     public String hobby = faker.options().option("Reading", "Sports", "Music");
-    public String pictureStatic = "tatt.jpg";
+    public String pictureStatic = "tatt.png";
     public String userAddress = faker.address().streetAddress();
     public String randomState = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
     public String randomCity = getRandomCity();
