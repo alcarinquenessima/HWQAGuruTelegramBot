@@ -1,14 +1,18 @@
 package tests;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import page.RegistrationPage;
 import randomValuesForTest.Users;
+
+import static io.qameta.allure.Allure.step;
 
 public class DemoQARegistrationTest extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
     Users user = new Users();
     @Test
+    @DisplayName("Filling all forms")
     void fillFormTest() {
         registrationPage.openPage()
                 .removeBanner ()
@@ -24,19 +28,22 @@ public class DemoQARegistrationTest extends TestBase {
                 .setAddress(user.userAddress)
                 .setState(user.randomState)
                 .setCity(user.randomCity)
-                .submitInfo()
-                .checkResults("Student Name", user.firstName)
-                .checkResults("Student Email", user.email)
-                .checkResults("Gender", user.gender)
-                .checkResults("Mobile", user.userNumber)
-                .checkResults("Date of Birth", user.day + " " + user.month + "," + user.year)
-                .checkResults("Subjects", user.randomSubject)
-                .checkResults("Hobbies", user.hobby)
-                .checkResults("Picture", user.pictureStatic)
-                .checkResults("Address", user.userAddress)
-                .checkResults("State and City", user.randomState + " " + user.randomCity);
+                .submitInfo();
+        step ("Checking results", () -> {
+            registrationPage.checkResults("Student Name", user.firstName)
+                    .checkResults("Student Email", user.email)
+                    .checkResults("Gender", user.gender)
+                    .checkResults("Mobile", user.userNumber)
+                    .checkResults("Date of Birth", user.day + " " + user.month + "," + user.year)
+                    .checkResults("Subjects", user.randomSubject)
+                    .checkResults("Hobbies", user.hobby)
+                    .checkResults("Picture", user.pictureStatic)
+                    .checkResults("Address", user.userAddress)
+                    .checkResults("State and City", user.randomState + " " + user.randomCity);
+        });
     }
     @Test
+    @DisplayName("Filling only necessary forms")
     void onlyNecessaryFormsRegistrationTest() {
         registrationPage.openPage()
                 .removeBanner ()
@@ -52,6 +59,7 @@ public class DemoQARegistrationTest extends TestBase {
                 .checkResults("Date of Birth", user.day + " " + user.month + "," + user.year);
     }
     @Test
+    @DisplayName("Adding wrong number")
     void negativeRegistrationTest(){
         registrationPage.openPage()
                 .removeBanner ()
