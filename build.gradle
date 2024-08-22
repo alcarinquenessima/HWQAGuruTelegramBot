@@ -67,8 +67,3 @@ task wrong_number(type: Test) {
         includeTags("WrongNumberTest")
     }
 }
-task property_jenkins (type: Test) {
-    useJUnitPlatform {
-        includeTags("Property")
-    }
-}
