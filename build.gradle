@@ -38,7 +38,7 @@ dependencies {
 }
 tasks.withType(Test) {
     useJUnitPlatform()
-
+    systemProperties(System.getProperties())
     testLogging {
         lifecycle {
             events "started", "skipped", "failed", "standard_error", "standard_out"
@@ -65,5 +65,10 @@ task necessary_forms(type: Test) {
 task wrong_number(type: Test) {
     useJUnitPlatform {
         includeTags("WrongNumberTest")
+    }
+}
+task property_jenkins (type: Test) {
+    useJUnitPlatform {
+        includeTags("Property")
     }
 }
