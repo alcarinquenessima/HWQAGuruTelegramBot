@@ -12,14 +12,6 @@ import static io.qameta.allure.Allure.step;
 @Tag("AllTests")
 public class DemoQARegistrationTest extends TestBase {
 
-    @AfterEach
-    void addAttachments() {
-        Attachments.screenshotAs("Last screenshot");
-        Attachments.pageSource();
-        Attachments.browserConsoleLogs();
-        Attachments.addVideo();
-    }
-
     RegistrationPage registrationPage = new RegistrationPage();
     Users user = new Users();
     @Test
