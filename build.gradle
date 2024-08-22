@@ -49,21 +49,21 @@ tasks.withType(Test) {
 
 task all_tests(type: Test) {
     useJUnitPlatform {
-        includeTags("All tests")
+        includeTags("AllTests")
     }
 }
 task full_test(type: Test) {
     useJUnitPlatform {
-        includeTags("Full test")
+        includeTags("FullTest")
     }
 }
 task necessary_forms(type: Test) {
     useJUnitPlatform {
-        includeTags("Necessary forms test")
+        includeTags("NecessaryFormsTest")
     }
 }
 task wrong_number(type: Test) {
     useJUnitPlatform {
-        includeTags("Wrong number test")
+        includeTags("WrongNumberTest")
     }
 }

@@ -99,6 +99,12 @@ public class RegistrationPage {
         address.setValue(value);
         return this;
     }
+
+    @Step ("Scrolling to City and State ")
+    public RegistrationPage scrollToCityState (){
+        stateInput.scrollTo();
+        return this;
+    }
     @Step ("Choosing state")
     public RegistrationPage setState (String value) {
         stateInput.click();
@@ -110,6 +116,11 @@ public class RegistrationPage {
     public RegistrationPage setCity (String value) {
         cityInput.click();
         cityInput.$(byText(value)).click();
+        return this;
+    }
+    @Step ("Scrolling to Submit button")
+    public RegistrationPage scrollToSubmit (){
+        submitButton.scrollTo();
         return this;
     }
     @Step ("Submitting info")

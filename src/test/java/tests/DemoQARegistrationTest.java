@@ -9,7 +9,7 @@ import page.RegistrationPage;
 import randomValuesForTest.Users;
 import static io.qameta.allure.Allure.step;
 
-@Tag("All tests")
+@Tag("AllTests")
 public class DemoQARegistrationTest extends TestBase {
 
     @AfterEach
@@ -23,7 +23,7 @@ public class DemoQARegistrationTest extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     Users user = new Users();
     @Test
-    @Tag("Full test")
+    @Tag("FullTest")
     @DisplayName("Filling all forms")
     void fillFormTest() {
         registrationPage.openPage()
@@ -38,8 +38,10 @@ public class DemoQARegistrationTest extends TestBase {
                 .setHobbies(user.hobby)
                 .uploadPicture(user.pictureStatic)
                 .setAddress(user.userAddress)
+                .scrollToCityState()
                 .setState(user.randomState)
                 .setCity(user.randomCity)
+                .scrollToSubmit()
                 .submitInfo();
         step ("Checking results", () -> {
             registrationPage.checkResults("Student Name", user.firstName)
@@ -55,7 +57,7 @@ public class DemoQARegistrationTest extends TestBase {
         });
     }
     @Test
-    @Tag("Necessary forms test")
+    @Tag("NecessaryFormsTest")
     @DisplayName("Filling only necessary forms")
     void onlyNecessaryFormsRegistrationTest() {
         registrationPage.openPage()
@@ -65,6 +67,7 @@ public class DemoQARegistrationTest extends TestBase {
                 .setGender(user.gender)
                 .setNumber(user.userNumber)
                 .setDate(user.day,user.month,user.year)
+                .scrollToSubmit()
                 .submitInfo()
                 .checkResults("Student Name", user.firstName)
                 .checkResults("Gender", user.gender)
@@ -72,7 +75,7 @@ public class DemoQARegistrationTest extends TestBase {
                 .checkResults("Date of Birth", user.day + " " + user.month + "," + user.year);
     }
     @Test
-    @Tag("Wrong number test")
+    @Tag("WrongNumberTest")
     @DisplayName("Adding wrong number")
     void negativeRegistrationTest(){
         registrationPage.openPage()
@@ -82,6 +85,7 @@ public class DemoQARegistrationTest extends TestBase {
                 .setGender(user.gender)
                 .setNumber(user.wrongUserNumber)
                 .setDate(user.day,user.month,user.year)
+                .scrollToSubmit()
                 .submitInfo()
                 .checkErrors();
     }
