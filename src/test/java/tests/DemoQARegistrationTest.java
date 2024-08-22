@@ -9,6 +9,7 @@ import page.RegistrationPage;
 import randomValuesForTest.Users;
 import static io.qameta.allure.Allure.step;
 
+@Tag("All tests")
 public class DemoQARegistrationTest extends TestBase {
 
     @AfterEach
@@ -22,7 +23,7 @@ public class DemoQARegistrationTest extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     Users user = new Users();
     @Test
-    @Tag("demoqa")
+    @Tag("Full test")
     @DisplayName("Filling all forms")
     void fillFormTest() {
         registrationPage.openPage()
@@ -54,7 +55,7 @@ public class DemoQARegistrationTest extends TestBase {
         });
     }
     @Test
-    @Tag("demoqa")
+    @Tag("Necessary forms test")
     @DisplayName("Filling only necessary forms")
     void onlyNecessaryFormsRegistrationTest() {
         registrationPage.openPage()
@@ -71,7 +72,7 @@ public class DemoQARegistrationTest extends TestBase {
                 .checkResults("Date of Birth", user.day + " " + user.month + "," + user.year);
     }
     @Test
-    @Tag("demoqa")
+    @Tag("Wrong number test")
     @DisplayName("Adding wrong number")
     void negativeRegistrationTest(){
         registrationPage.openPage()

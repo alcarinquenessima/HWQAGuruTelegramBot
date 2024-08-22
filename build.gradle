@@ -47,8 +47,23 @@ tasks.withType(Test) {
     }
 }
 
-task demoqa_test(type: Test) {
+task all_tests(type: Test) {
     useJUnitPlatform {
-        includeTags("demoqa")
+        includeTags("All tests")
+    }
+}
+task full_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("Full test")
+    }
+}
+task necessary_forms(type: Test) {
+    useJUnitPlatform {
+        includeTags("Necessary forms test")
+    }
+}
+task wrong_number(type: Test) {
+    useJUnitPlatform {
+        includeTags("Wrong number test")
     }
 }
