@@ -1,0 +1,5 @@
+7512516356:AAFHsUb_iLJLmY3bMHNC-EIqGNpgHvt4TDU
+
+https://api.telegram.org/bot7512516356:AAFHsUb_iLJLmY3bMHNC-EIqGNpgHvt4TDU/getUpdates
+
+-1002165648651
